@@ -91,16 +91,13 @@
             display: block;
             text-transform: uppercase;
         }
-   </style>
+    </style>
+
 
 
     <div class="de elCountdownEvergreen elMargin0 ui-droppable elAlign_center de-editable" id="tmp_countdown_evergreen-63112-113-188" style="margin-top: 10px; outline: none;cursor: pointer;">
         <div class="wideCountdownEvergreen clearfix cdLabelBold wideCountdownSize2 cdYellow cdStyleGradient cdLabelWhite is-countdown">
             <span class="countdown-row countdown-show3">
-                <span class="countdown-section">
-                    <span class="countdown-amount" id="day1">00</span>
-                    <span class="countdown-period">Day</span>
-                </span>
                 <span class="countdown-section">
                     <span class="countdown-amount" id="hour1">00</span>
                     <span class="countdown-period">Hour</span>
@@ -125,19 +122,18 @@
         function countDown(){
 
         let startTime=new Date().getTime();
-        let endTime= new Date('Wed Oct 25 2022 23:59:59 GMT-0700').getTime();
+        let endTime= new Date('Wed Oct 30 2022 23:59:59 GMT-0700').getTime();
         
         let time=endTime-startTime;
         if(time>0){
             // I used toFixed(5) to avoid exp 1.5e-7
-            let d=Math.floor(time/(24*60*60*1000))
-            let h=((time%(24*60*60*1000))/(60*60*1000*100)).toFixed(5)
+            
+            let h=Math.floor(time/(60*60*1000))
             let m=((time%(60*60*1000))/(60*1000*100)).toFixed(5)
             let s=(time%(60*1000)/(1000*100)).toFixed(5)
             let ms=((time%1000)/100).toFixed(5)
             
-            day.innerHTML=(d<10)?'0'+d:d
-            hour.innerHTML=h.toString().slice(2,4)||'00'
+            hour.innerHTML=(h<10)?'0'+h:h
             minute.innerHTML=m.toString().slice(2,4)||'00'
             second.innerHTML=s.toString().slice(2,4)||'00'
             msecond.innerHTML=ms.toString().slice(2,4)||'00'
@@ -147,7 +143,6 @@
             msecond.innerHTML='00'
         }
     }
-        var day=document.getElementById('day1');
         var hour=document.getElementById('hour1');
         var minute = document.getElementById('minute1');
         var second = document.getElementById('second1');
@@ -155,3 +150,4 @@
         countDown()
         setInterval(countDown,1) 
     </script>
+
